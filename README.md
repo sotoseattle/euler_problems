@@ -30,3 +30,27 @@ Problem 11
 ----------
 
 NArray, anybody?
+
+Problem 12
+----------
+
+The key is to realize what we need exactly, which is all the possible factors of a number, not only the prime factors, but all their uniq combinations.
+
+Problem 13
+----------
+
+NArray helps to add by columns, from left to right, so we end up with 50 sums.
+
+Problem 14
+----------
+
+```ruby
+def collatz_chain_size(n)
+  count = 1
+  while n != 1
+    n = (n % 2 == 0) ? n/2 : (3 * n) + 1
+    count += 1
+  end
+  count
+end
+```
