@@ -12,14 +12,10 @@
 # What is the first of these numbers?
 require 'prime'
 
-def distinct_factors(n)
-  Prime.prime_division(n).map { |e| e.first }.count
-end
-
 n = 1
 sol = []
 while sol.size < 4 && n < 1_000_000
-  if distinct_factors(n) == 4
+  if n.prime_division.size == 4
     sol.last == n - 1 ? sol << n : sol = [n]
   end
   n += 1

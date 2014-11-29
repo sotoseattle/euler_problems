@@ -14,20 +14,16 @@
 # prime and twice a square?
 require 'prime'
 
-def at_least_one_is_goldbach?(n)
-  Prime.each(n).map.any? do |prime|
-    x = Math.sqrt((n - prime)/2.0)
-    x == x.to_i
+def one_is_goldbach?(n)
+  Prime.each(n).map.any? { |prime| Math.sqrt((n - prime)/2.0) % 1 == 0 }
+end
+
+def do_me_a_goldbach
+  n = 34
+  loop do
+    return n unless one_is_goldbach?(n) if n.odd?
+    n += 1
   end
 end
 
-n = 34
-while n < 10_000_000
-  if n % 2 != 0
-    unless at_least_one_is_goldbach?(n)
-      p "BINGO: #{n}"
-      exit
-    end
-  end
-  n += 1
-end
+p do_me_a_goldbach
